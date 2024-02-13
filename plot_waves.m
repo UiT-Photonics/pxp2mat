@@ -1,4 +1,4 @@
-function plot_waves(pxp)
+function plot_waves(pxp, varargin)
 % plots all waverecords in a struct created by pxp2mat.py. needs at least 2020b
 % or around there.
     assert(isstruct(pxp), "pxps are structs buddy");
@@ -17,7 +17,7 @@ function plot_waves(pxp)
     tl = tiledlayout(f, "flow", "TileSpacing", spacing, "Padding", spacing);
     for i = 1:length(waves)
         ah = nexttile(tl);
-        plot(ah, pxp.(flds{waves(i)}).data);
+        plot(ah, pxp.(flds{waves(i)}).data, varargin{:});
         title(ah, flds{waves(i)}, 'interpreter', 'none');
     end
 end
