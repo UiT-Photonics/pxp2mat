@@ -1,0 +1,40 @@
+# running the commands below should build a functioning executable of pxp2mat
+#
+# TODO: make this into a proper script
+# NOTE:
+# - python >= 3.11.4 doesn't works as of 2024-03-20 (nuitka 2.1.2), see
+#   https://github.com/Nuitka/Nuitka/issues/2521
+# - haven't tested with anything but micromamba. i assume mamba should work, no
+#   no idea about conda
+
+# change these as you like 
+PKG_MNGR=micromamba
+INSTALL_PREFIX=/usr/local/bin
+ENV=pxpbuilder
+PRJ=pxp2mat
+
+# create an environment to build in
+$PKG_MNGR create -y -n $ENV python=3.11.3
+# install the necessary packages (with autoconfirm)
+$PKG_MNGR install -y -n $ENV -c conda-forge nuitka ordered-set zstandard numpy scipy
+# activate the environment
+$PKG_MNGR activate $ENV
+# install igor2 with pip since it's not in conda-forge
+pip install igor2
+# build the thing
+python -m nuitka --standalone --onefile $PRJ.py
+
+# TODO: check that it worked out
+
+# remove the build files
+rm -rf $PRJ.build $PRJ.dist $PRJ.onefile-build
+# deactivate the environment..
+$PKG_MNGR deactivate
+# ..and remove it
+$PKG_MNGR env remove -y -n $ENV
+
+# this last step is very optional and not really recommended
+
+# install the binary
+sudo install -T $PRJ.bin $INSTALL_PREFIX/$PRJ
+

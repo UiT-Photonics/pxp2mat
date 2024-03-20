@@ -9,11 +9,7 @@ then writes them to a mat. anything that's not either of those two types is
 simply ignored. also the keys are just used straight up, so if you have any
 funky characters in them matlab will be sad.
 
-standalone executable built by (just so i remember)
-micromamba activate spyder-env # if you're bent that way
-python -m nuitka --standalone --onefile pxp2mat.py
-
-@author: rag
+@author: ragnar.seton@uit.no
 """
 import sys
 import numpy as np
