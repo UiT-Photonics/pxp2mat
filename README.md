@@ -1,5 +1,5 @@
 ## pxp2mat
-Simple wrapper for the [igor2](https://github.com/AFM-analysis/igor2) package that converts [Igor Pro](https://www.wavemetrics.com/products/igorpro) "packed experiments", i.e. .pxp files, into mat files (matlab files). It's extremely basic, it only handles scalar values and wave records but at least you can get the data out.
+Simple wrapper for the [igor2](https://github.com/AFM-analysis/igor2) package that converts [Igor Pro](https://www.wavemetrics.com/products/igorpro) "packed experiments", i.e. .pxp files, into mat files (matlab files). It's very basic and just parses some types of records.
 
 Also includes a matlab script to plot all the wave records of the ouput struct.
 
