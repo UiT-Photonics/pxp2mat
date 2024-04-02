@@ -25,7 +25,11 @@ def warn(msg):
 
 # the "converter"...
 def pxp2mat(fn):
-    d = loadpxp(fn)[0] or fail("Failed to load {0}".format(fn))
+    try:
+        d = loadpxp(fn)[0]
+    except:
+        fail("Loading pxp file '{0}' failed: {1}".format(fn,sys.exc_info()[1]))
+    
     md = []
     meta = []
     for e in d:
@@ -48,7 +52,7 @@ def pxp2mat(fn):
         fail("Saving '{0}' failed: {1}".format(matfn, sys.exc_info()[1]))
 
 def waveRec2md(wr):
-    # i'm just assuming that the prefix for name indicated that it's always bytes
+    # i'm just assuming that the prefix for name indicates that it's bytes
     return {
             'type': 'wave',
             'name': wr.wave['wave']['wave_header']['bname'].decode(),
