@@ -41,6 +41,7 @@ function pxp_viewer(pxp, varargin)
             end
         elseif startsWith(types(i,:), 'wave')
             waves = [pxp.records{startsWith(string(pxp.meta), 'wave')}];
+            if numel(waves) > 1; t.Title(end+1) = 's'; end
             wtg = uitabgroup(t, 'Units', 'normalized', 'Position', [0 0 1 1]);
             wtt = uitab(wtg, 'Title', 'Table');
             cm = uicontextmenu(f);
@@ -53,7 +54,6 @@ function pxp_viewer(pxp, varargin)
 	        uimenu('Parent', cm, ...
 		           'Label', 'Export all waves to workspace', ...
 		           'Callback', @(~,~) save2ws(waves, 3));
-
             w_tbl = uitable('Parent', wtt, 'Units', 'normalized', ...
                             'Position', [0,0,1,1], ...
                             'ColumnName', {waves.name}, ...
@@ -79,6 +79,7 @@ function pxp_viewer(pxp, varargin)
     % helpers
     function dump_text(pxp, type, parent)
         idxs = find(startsWith(string(pxp.meta), type));
+        if numel(idxs) > 1; parent.Title(end+1) = 's'; end
         tw = 1/numel(idxs);
         flds = {'text', 'data'};
         fld = flds{isfield(pxp.records{idxs(1)}, flds)};
