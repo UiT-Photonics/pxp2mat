@@ -3,8 +3,9 @@ function pxp_viewer(pxp, varargin)
 % or around there.
 % Variables in the pxp-file are presented in a copy-pasteable way and wave-data
 % can be exported by right-clicking the table in which they are presented. Note
-% that wave-data is padded with NaNs in the table view (needed to make it work),
-% these NaNs are not exported unless explicitly selected.
+% that wave-data is padded with NaNs in the table view (needed to make it work
+% in a plain old figure as opposed to uifigure), these NaNs are not exported
+% unless explicitly selected.
 %
 % Usage:
 % pxp = load('converted_pxp_file.mat');
