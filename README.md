@@ -27,6 +27,8 @@ chmod +x pxp2mat.py
 ./pxp2mat.py my_igor_data.pxp
 ```
 
+### Screenshot
+![Screenshot of the matlab viewer](screenshot.png "Screenshot of the matlab viewer")
 
 ### Why?
 I needed to look at the data in some pxp-files and the CLI of igor2 wasn't really working (at that time, don't know the state of it now).

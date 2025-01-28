@@ -1,0 +1,12 @@
+__pycache__/
+.DS_Store
+*.out
+*.mex*
+*.db
+*.a
+*.o
+*.asv
+*.*~
+*_local.m
+test.pxp
+
